@@ -1,5 +1,5 @@
 all:
-	mpicc -fopenmp hello_world.c -o exe
+	mpicc -fopenmp ring.c -o exe
 run:
-	mpirun ./exe
-	@# mpirun -n 4 ./exe
+	@# mpirun ./exe
+	mpirun -n 8 ./exe
