@@ -1,3 +1,35 @@
+/*
+    Inicializando-se  uma  variável  com um valor zero e a passando para outros processos que deverão abrir threads para 
+    incrementar  a  variável  recebida,  assim como o próprio processo deverá incrementá-la para que, logo em sequida, a
+    envie para o próximo processo para que ocorrá o mesmo até o anel ser totalmente percorrido.
+
+                                                 +--------+
+                                                 |        |
+                    +------+            +--------+  x = 0 +-------+               +------+
+                    |      |            |        |        |       |               |      |
+                    | x+=1 +---+        |        +--------+       |          +----+ x+=1 |
+                    |      |   |        |                         |          |    |      |
+                    +------+   |    +---+----+                +---+----+     |    +------+
+                    |      |   |    |        |                |        |     |    |      |
+                    | x+=1 +--------+  x+=1  |                |  x+=1  +----------+ x+=1 |
+                    |      |   |    |        |                |        |     |    |      |
+                    +------+   |    +---+----+                +---+----+     |    +------+
+                    |      |   |        |                         |          |    |      |
+                    | x+=1 +---+        |        +--------+       |          +----+ x+=1 |
+                    |      |            |        |        |       |               |      |
+                    +------+            +--------+  x+=1  +-------+               +------+
+                                                 |        |
+                                                 +---+----+
+                                                     |
+                                              +--------------+
+                                              |      |       |
+                                           +--+---+--+---+---+--+
+                                           |      |      |      |
+                                           | x+=1 | x+=1 | x+=1 |
+                                           |      |      |      |
+                                           +------+------+------+
+*/
+
 #include <stdio.h>
 #include <mpi.h>
 #include <omp.h>
