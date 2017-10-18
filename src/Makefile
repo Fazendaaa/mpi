@@ -1,5 +1,4 @@
 all:
-	mpicc -fopenmp ring.c -o exe
+	@mpicc dynamic_recv.c -o exe
 run:
-	@# mpirun ./exe
-	mpirun -n 8 ./exe
+	@mpirun -n 3 ./exe
