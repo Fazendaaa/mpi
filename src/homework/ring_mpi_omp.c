@@ -29,7 +29,6 @@
                                            |      |      |      |
                                            +------+------+------+
 */
-
 #include <stdio.h>
 #include <mpi.h>
 #include <omp.h>
@@ -59,7 +58,7 @@ int main (int argc, char **argv) {
     } else {
         /*  Receba o valor enviado pelo processo anterior do anel   */
         MPI_Recv(&token, 1, MPI_INT, world_rank-1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-        printf("Process %d received token %d from process %d\n", world_rank, token, world_rank-1);
+        printf("\nProcess %d received token %d from process %d\n\n", world_rank, token, world_rank-1);
 
         #pragma omp parallel default(shared) private(this_thread, n_threads)
         {
@@ -86,7 +85,7 @@ int main (int argc, char **argv) {
     */
     if(0 == world_rank) {
         MPI_Recv(&token, 1, MPI_INT, world_size-1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-        printf("Process %d received token %d from process %d\n", world_rank, token, world_size-1);
+        printf("\nProcess %d received token %d from process %d\n\n", world_rank, token, world_size-1);
     }
 
     MPI_Finalize();
