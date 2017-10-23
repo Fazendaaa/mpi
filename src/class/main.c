@@ -30,9 +30,8 @@ int main (int argc, char **argv) {
     MPI_Reduce(&count, &final, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
 
     if (0 == world_rank) {
-        for (i=0; i < vector_size; i++) {
+        for (i=0; i < vector_size; i++)
             printf("%d ", vector_send[i]);
-        }
         printf("\n\nFinal: %d\n", final);
     }
 

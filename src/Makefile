@@ -1,4 +1,4 @@
 all:
-	@mpicc dynamic_recv.c -o exe
+	@mpicc coll_comm.c -o exe -Wall
 run:
-	@mpirun -n 3 ./exe
+	@mpirun ./exe
